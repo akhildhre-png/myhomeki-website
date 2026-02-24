@@ -596,6 +596,72 @@
   renderDots();
   setProgress();
   showStep(0);
+//------------------Sample Data Community and Building --------- Start
+// ----------- Community + Building Dataset -----------
+const COMMUNITY_DATA = {
+  "Dubai Marina": [
+    "Marina Gate",
+    "Cayan Tower",
+    "Princess Tower",
+    "Marina Promenade",
+    "Jumeirah Living Marina Gate"
+  ],
+  "Downtown Dubai": [
+    "Burj Views",
+    "South Ridge",
+    "The Address Downtown",
+    "Burj Vista",
+    "Boulevard Point"
+  ],
+  "JVC": [
+    "Belgravia",
+    "Bloom Heights",
+    "Five JVC",
+    "Oxford Residences",
+    "Luma 22"
+  ],
+  "Palm Jumeirah": [
+    "Shoreline Apartments",
+    "Tiara Residences",
+    "Golden Mile",
+    "Serenia",
+    "Atlantis The Royal Residences"
+  ]
+};
+
+const communitySelect = document.getElementById("communitySelect");
+const projectSelect = document.getElementById("projectSelect");
+
+// Populate communities
+Object.keys(COMMUNITY_DATA).forEach(area => {
+  const opt = document.createElement("option");
+  opt.value = area;
+  opt.textContent = area;
+  communitySelect.appendChild(opt);
+});
+
+// When community changes → update buildings
+communitySelect.addEventListener("change", () => {
+  const selected = communitySelect.value;
+  projectSelect.innerHTML = '<option value="">Select building</option>';
+  projectSelect.disabled = !selected;
+
+  if (selected && COMMUNITY_DATA[selected]) {
+    COMMUNITY_DATA[selected].forEach(project => {
+      const opt = document.createElement("option");
+      opt.value = project;
+      opt.textContent = project;
+      projectSelect.appendChild(opt);
+    });
+  }
+});
+  
+//------------------Sample Data Community and Building --------- End
+
+
+  
+
+  
 </script>
 </body>
 </html>
