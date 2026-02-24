@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MyHomeKi – Find Your Next Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { background: #f4f5f7; color: #111827; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #e5e7eb; }
+    .wrapper { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    .flex { display: flex; align-items: center; }
+    .between { justify-content: space-between; }
+    .logo { width: 40px; height: 40px; border-radius: 16px; background: #111827; color: #fff; display: grid; place-items: center; font-weight: 700; }
+    .pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: 11px; border: 1px solid #e5e7eb; background: rgba(255,255,255,0.8); margin-right: 6px; margin-top: 6px; }
+    main { padding: 32px 0 48px; }
+    h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    p { font-size: 14px; color: #4b5563; line-height: 1.5; }
+    .grid { display: grid; gap: 16px; }
+    @media(min-width: 768px) {
+      .grid-hero { grid-template-columns: 3fr 2fr; align-items: flex-end; }
+      .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media(min-width: 640px) and (max-width: 1023px) {
+      .grid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .filters, .card, .form-box { background: #fff; border-radius: 18px; border: 1px solid #e5e7eb; padding: 14px; }
+    .card { padding: 0; overflow: hidden; box-shadow: 0 8px 18px rgba(15,23,42,0.04); }
+    .card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .card-body { padding: 12px; }
+    .card-title { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-loc { font-size: 12px; color: #6b7280; margin-top: 2px; }
+    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 12px; }
+    .price { font-weight: 700; font-size: 15px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .tag { font-size: 11px; padding: 3px 8px; border-radius: 999px; background: #f3f4f6; color: #374151; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 8px 12px; border-radius: 12px; border: none; cursor: pointer; font-size: 13px; font-weight: 500; }
+    .btn-primary { background: #111827; color: #fff; width: 100%; margin-top: 8px; }
+    .btn-outline { background: #fff; color: #111827; border: 1px solid #d1d5db; width: 100%; margin-top: 8px; }
+    .filters input, .filters select, .form-box input, .form-box select, .form-box textarea {
+      width: 100%; padding: 7px 9px; font-size: 13px; border-radius: 10px; border: 1px solid #d1d5db;
+    }
+    .filters label, .form-box label { font-size: 12px; font-weight: 500; margin-bottom: 4px; display: block; color: #374151; }
+    .filters small { font-size: 11px; color: #6b7280; display: block; margin-top: 6px; }
+    .mt-2 { margin-top: 8px; } .mt-3 { margin-top: 12px; } .mt-4 { margin-top: 16px; } .mt-6 { margin-top: 24px; }
+    .mb-2 { margin-bottom: 8px; } .py-3 { padding-top: 12px; padding-bottom: 12px; }
+    .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+    footer { border-top: 1px solid #e5e7eb; background: #fff; padding: 16px 0; text-align: center; font-size: 11px; color: #6b7280; }
+    a { color: inherit; text-decoration: none; }
+    a.underline { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrapper py-3 flex between">
+      <div class="flex gap-3">
+        <div class="logo">MH</div>
+        <div>
+          <div style="font-size:15px;font-weight:600;">MyHomeKi</div>
+          <div style="font-size:11px;color:#6b7280;">Smart property listings for serious buyers</div>
+        </div>
+      </div>
+      <a href="#lead-form" style="font-size:12px;border-radius:999px;border:1px solid #d1d5db;padding:6px 12px;">Contact us</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrapper">
+      <!-- HERO -->
+      <section class="grid grid-hero gap-3">
+        <div>
+          <h1>Find your next home with <span style="color:#6b7280;">MyHomeKi</span></h1>
+          <p class="mt-2">
+            Browse curated properties in Riyadh & GCC. Share your details and our team will match you
+            with the best options based on your budget, location, and timeline.
+          </p>
+          <div class="mt-3">
+            <span class="pill">Verified listings</span>
+            <span class="pill">Fast call-back</span>
+            <span class="pill">WhatsApp support</span>
+          </div>
+        </div>
+
+        <!-- QUICK FILTERS (visual only) -->
+        <div class="filters">
+          <div class="grid gap-2">
+            <div>
+              <label>City</label>
+              <select>
+                <option>Any</option>
+                <option>Riyadh</option>
+                <option>Jeddah</option>
+                <option>Dubai</option>
+              </select>
+            </div>
+            <div>
+              <label>Property type</label>
+              <select>
+                <option>Any</option>
+                <option>Apartment</option>
+                <option>Villa</option>
+                <option>Townhouse</option>
+              </select>
+            </div>
+            <div>
+              <label>Bedrooms</label>
+              <select>
+                <option>Any</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+              </select>
+            </div>
+            <div class="grid gap-2" style="grid-template-columns: repeat(2, minmax(0,1fr));">
+              <div>
+                <label>Min budget</label>
+                <input type="number" placeholder="e.g. 1,000,000" />
+              </div>
+              <div>
+                <label>Max budget</label>
+                <input type="number" placeholder="e.g. 4,000,000" />
+              </div>
+            </div>
+          </div>
+          <small>Filters are a guide. Share your details below and we’ll shortlist options for you.</small>
+        </div>
+      </section>
+
+      <!-- PROPERTY CARDS -->
+      <section class="mt-6">
+        <h2>Featured properties</h2>
+        <p class="mb-2">Sample listings to show what we offer. Real inventory can be updated later.</p>
+
+        <div class="grid grid-cards">
+          <!-- Card 1 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200&auto=format&fit=crop" alt="Riyadh North Villa" />
+            <div class="card-body">
+              <div class="card-title">Modern 4BR Villa – North Riyadh</div>
+              <div class="card-loc">Al Narjis • Riyadh, KSA</div>
+              <div class="card-meta">
+                <div class="price">3,800,000 SAR</div>
+                <div>4 bed • 5 bath • 320 m²</div>
+              </div>
+              <div class="tags">
+                <span class="tag">Family community</span>
+                <span class="tag">Maid’s room</span>
+                <span class="tag">Near schools</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1502672023488-70e25813eb80?q=80&w=1200&auto=format&fit=crop" alt="Apartment" />
+            <div class="card-body">
+              <div class="card-title">2BR Apartment – City View</div>
+              <div class="card-loc">King Fahd Road • Riyadh, KSA</div>
+              <div class="card-meta">
+                <div class="price">1,450,000 SAR</div>
+                <div>2 bed • 2 bath • 120 m²</div>
+              </div>
+              <div class="tags">
+                <span class="tag">High floor</span>
+                <span class="tag">Covered parking</span>
+                <span class="tag">Gym + pool</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop" alt="Townhouse" />
+            <div class="card-body">
+              <div class="card-title">3BR Townhouse – Gated Community</div>
+              <div class="card-loc">East Riyadh, KSA</div>
+              <div class="card-meta">
+                <div class="price">2,100,000 SAR</div>
+                <div>3 bed • 4 bath • 200 m²</div>
+              </div>
+              <div class="tags">
+                <span class="tag">Security 24/7</span>
+                <span class="tag">Play area</span>
+                <span class="tag">Clubhouse</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- LEAD FORM -->
+      <section class="mt-6" id="lead-form">
+        <div class="grid gap-3" style="grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);">
+          <div>
+            <h2>Tell us what you’re looking for</h2>
+            <p class="mt-2">
+              Share a few details and we’ll call or WhatsApp you with options that fit your budget and
+              preferred areas. No spam, no pressure.
+            </p>
+            <div class="mt-3">
+              <span class="pill">Response within working hours</span>
+              <span class="pill">Arabic & English support</span>
+            </div>
+          </div>
+
+          <form class="form-box" onsubmit="alert('Thank you! We’ll contact you soon.'); return false;">
+            <div class="grid gap-2">
+              <div>
+                <label>Full name *</label>
+                <input type="text" required placeholder="Your name" />
+              </div>
+              <div>
+                <label>Mobile number *</label>
+                <input type="tel" required placeholder="+966 5x xxx xxxx" />
+              </div>
+              <div>
+                <label>Email</label>
+                <input type="email" placeholder="name@email.com" />
+              </div>
+              <div>
+                <label>Preferred city</label>
+                <select>
+                  <option>Riyadh</option>
+                  <option>Jeddah</option>
+                  <option>Dammam / Khobar</option>
+                  <option>Dubai</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label>Approximate budget</label>
+                <select>
+                  <option>Below 1M SAR</option>
+                  <option>1M – 2M SAR</option>
+                  <option>2M – 4M SAR</option>
+                  <option>4M+ SAR</option>
+                </select>
+              </div>
+              <div>
+                <label>When are you planning to buy?</label>
+                <select>
+                  <option>ASAP</option>
+                  <option>1–3 months</option>
+                  <option>3–6 months</option>
+                  <option>6+ months</option>
+                  <option>Just exploring</option>
+                </select>
+              </div>
+              <div>
+                <label>Tell us more</label>
+                <textarea rows="3" placeholder="Bedrooms, areas you like, any must-haves…"></textarea>
+              </div>
+              <div style="font-size:11px;color:#6b7280;display:flex;align-items:flex-start;gap:6px;">
+                <input type="checkbox" required style="margin-top:3px;" />
+                <span>I agree to be contacted by phone or WhatsApp regarding properties that match my request. My data will be handled as per MyHomeKi’s privacy policy.</span>
+              </div>
+              <button class="btn btn-primary" type="submit">Submit request</button>
+              <button class="btn btn-outline" type="button">Or chat on WhatsApp</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> MyHomeKi. All rights reserved.
+    · <a class="underline" href="#">Privacy</a> · <a class="underline" href="#">Terms</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
